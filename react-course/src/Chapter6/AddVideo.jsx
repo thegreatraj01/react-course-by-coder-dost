@@ -42,18 +42,7 @@ function AddVideo({ addnewvideo }) {
             <input type="text" name='view' value={newvideo.view} placeholder="views" onChange={handlechange} />
 
             <button onClick={handlesubmit}> add video </button>
-            {/* <button onClick={() => {
-                // setVideo([...video, {
-                //     channel: "my channel",
-                //     title: "web developement",
-                //     view: 100,
-                //     time: '1 month ago',
-                //     id: video.length + 1,
-                //     verified: true,
-                // }])
-            }}>
-                add video
-            </button> */}
+
         </form>
     )
 }
