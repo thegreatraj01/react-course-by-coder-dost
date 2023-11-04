@@ -12,6 +12,7 @@ import Videolist from './Chapter6/Videolist';
 
 function App() {
   const [videos, setVideo] = useState(videosDB);
+  const [editablevideo, setEditablevideo] = useState(null)
 
   // function for add a new video from chapter 6 add new video component 
   const addnewvideo = (newvideo) => {
@@ -28,13 +29,29 @@ function App() {
     // console.log(id);
   }
 
+  const editvideo = (id) => {
+    // jo video edit hoga 
+    setEditablevideo(videos.find(v => v.id === id));
+
+  }
+
+  // function for update a video from add video component 
+  const updatevideo = (video) => {
+    const index = videos.findIndex(v => v.id === video.id);
+    const newvideo = [...videos]
+    newvideo.splice(index, 1,video);
+    setVideo(newvideo)
+    // console.log(newvideo ,"9");
+    
+
+  }
 
   return (
     <div  >
 
       {/* sending a function to add new video component  */}
-      <Videolist deletevideo={deletevideo} videos={videos} ></Videolist>
-      <AddVideo addnewvideo={addnewvideo}> </AddVideo>
+      <Videolist editvideo={editvideo} deletevideo={deletevideo} videos={videos} ></Videolist>
+      <AddVideo addnewvideo={addnewvideo} updatevideo={updatevideo} editablevideo={editablevideo}> </AddVideo>
 
 
     </div>

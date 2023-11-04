@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-function AddVideo({ addnewvideo }) {
+function AddVideo({ addnewvideo, editablevideo, updatevideo }) {
 
     const initialstate = {
         channel: "my channel",
@@ -16,7 +16,11 @@ function AddVideo({ addnewvideo }) {
     const handlesubmit = (e) => {
         e.preventDefault();
         // calling the prop function for adding a new vido from child component 
-        addnewvideo(newvideo);
+        if (editablevideo) {
+            updatevideo(newvideo)
+        } else {
+            addnewvideo(newvideo);
+        }
         setNewvideo(initialstate);
         // console.log(newvideo);
     }
@@ -31,7 +35,11 @@ function AddVideo({ addnewvideo }) {
         // console.log(newvideo);
     }
 
-
+    useEffect(() => {
+        if (editablevideo) {
+            setNewvideo(editablevideo)
+        }
+    }, [editablevideo])
 
 
 
@@ -41,7 +49,7 @@ function AddVideo({ addnewvideo }) {
 
             <input type="text" name='view' value={newvideo.view} placeholder="views" onChange={handlechange} />
 
-            <button onClick={handlesubmit}> add video </button>
+            <button onClick={handlesubmit}> {editablevideo? "edit":"add"}  video </button>
 
         </form>
     )
