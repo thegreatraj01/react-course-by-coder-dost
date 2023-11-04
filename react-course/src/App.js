@@ -22,12 +22,18 @@ function App() {
     console.log(videos);
   }
 
+  const deletevideo = (id) => {
+    // jis vi video ka id niche se aa rahe id se match hoga bo array se filter ho jayega 
+    setVideo(videos.filter(v => v.id !== id))
+    // console.log(id);
+  }
+
 
   return (
     <div  >
 
       {/* sending a function to add new video component  */}
-      <Videolist videos={videos} ></Videolist>
+      <Videolist deletevideo={deletevideo} videos={videos} ></Videolist>
       <AddVideo addnewvideo={addnewvideo}> </AddVideo>
 
 
