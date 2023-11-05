@@ -1,11 +1,11 @@
 
 
 
-function Thumb({ title, channel, view, time,verified,id ,children,deletevideo,editvideo}) {
+function Thumb({ title, channel, view, time,verified,id ,children,dispatch,editvideo}) {
 
     return (
         <div style={{margin:"10px", position:'relative'}}>
-            <button onClick={()=>{deletevideo(id)}} style={{position:'absolute' ,right:'0px' }}>X</button>
+            <button onClick={()=>dispatch({ type: "DELETE", payload: id })} style={{position:'absolute' ,right:'0px' }}>X</button>
             <button onClick={()=>{editvideo(id)}} style={{position:'absolute' ,right:'25px' }}>edit</button>
             <div>
             <img src={`https://picsum.photos/id/${id}/200/300`} alt="logo" />

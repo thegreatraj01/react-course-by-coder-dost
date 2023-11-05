@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-function AddVideo({ addnewvideo, editablevideo, updatevideo }) {
+function AddVideo({ dispatch, editablevideo }) {
 
     const initialstate = {
         channel: "my channel",
@@ -17,9 +17,9 @@ function AddVideo({ addnewvideo, editablevideo, updatevideo }) {
         e.preventDefault();
         // calling the prop function for adding a new vido from child component 
         if (editablevideo) {
-            updatevideo(newvideo)
+            dispatch({ type: "UPDATE", payload: newvideo });
         } else {
-            addnewvideo(newvideo);
+            dispatch({ type: "ADD", payload: newvideo });
         }
         setNewvideo(initialstate);
         // console.log(newvideo);

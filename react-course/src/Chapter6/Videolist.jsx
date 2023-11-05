@@ -3,13 +3,13 @@ import Thumb from '../Chapter2/Thumbnail';
 import Button from '../Chapter4/Button';
 
 
-const Videolist = ({ videos,deletevideo,editvideo }) => {
+const Videolist = ({ videos,dispatch,editvideo }) => {
     return (
         <div>
             <div style={{ display: "flex" }} >
                 {videos.map((video) => {
                     return (
-                        <Thumb key={video.id} title={video.title} channel={video.channel} view={video.view} time={video.time} verified={video.verified} id={video.id} deletevideo={deletevideo} editvideo={editvideo} >
+                        <Thumb key={video.id} title={video.title} channel={video.channel} view={video.view} time={video.time} verified={video.verified} id={video.id} dispatch={dispatch} editvideo={editvideo} >
                             <Button onPlay={() => console.log("play", video.title)} onPause={() => console.log("pause", video.title)}>{video.title} </Button>
                         </Thumb>
 
